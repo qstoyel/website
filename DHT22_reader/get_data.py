@@ -4,7 +4,9 @@ import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
 
-db_filename = "apartment.db"
+
+
+db_filename = "./DHT22_reader/apartment.db"
 def get_data():
 	#queries db
 	con = sqlite3.connect(db_filename)
@@ -17,10 +19,10 @@ def get_data():
 	week_ago = now - datetime.timedelta(days = 7)
 
 	#make and save plots
-	save_data_to_fig(data[data["timestamp"] > hour_ago, "hour"])
+	save_data_to_fig(data[data["timestamp"] > hour_ago], "hour")
 	save_data_to_fig(data[data["timestamp"] > day_ago], "day")
 	save_data_to_fig(data[data["timestamp"] > week_ago], "week")	
-	return 0
+	return data[-1:]
 
 def save_data_to_fig(data, n):
 	plt.figure(figsize=(12,6))
@@ -28,13 +30,13 @@ def save_data_to_fig(data, n):
 	plt.title("Humidity")
 	plt.ylabel("Humidity (%)")
 	plt.xlabel("Time")
-	plt.savefig("tmp/hum_"+n+".png")
+	plt.savefig("./static/tmp/hum_"+n+".png")
 	plt.figure(figsize=(12,6))
 	plt.plot(data["timestamp"], data["temp"])
 	plt.title("Temperature")
 	plt.xlabel("Time")
 	plt.ylabel("Temperature (C)")
-	plt.savefig("tmp/temp_"+n+".png")
+	plt.savefig("./static/tmp/temp_"+n+".png")
 
 def string_to_datetime(timestr):
 		return datetime.datetime.strptime(timestr, '%Y-%m-%d %H:%M:%S')
