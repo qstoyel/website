@@ -7,6 +7,7 @@
 			{% endblock %}
 		</title>
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='cat_hat.jpg') }}"/>
 	</head>
 	<div id="topnav" class = "topnav">
 		<a id="homenav" href = "/">Home</a>
@@ -15,8 +16,10 @@
 	<script src="{{ url_for('static', filename='navFunction.js') }}">
 	</script>
 	<body>
+	<div class="central-column">
 		{% block body %}
 		{% endblock %}
-	</body>
+	<content-area>
+	</div>
 	
 </html>
