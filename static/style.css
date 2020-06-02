@@ -1,6 +1,7 @@
 html {
     min-height:100%;/* make sure it is at least as tall as the viewport */
     position:relative;
+    overflow: visible;
 }
 h1 {
 	text-align: center;
@@ -9,6 +10,12 @@ h1 {
 body {
 	background-color: grey;
 	height: 100%;
+}
+
+.dataplot {
+	width: 80%;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .central-column {
@@ -21,10 +28,11 @@ body {
     top:0;
     padding-top: 25px;
     /*margin-top: 24px;*/
-    bottom:0;
+    /*bottom:0;*/
     left:10%;
     right:10%;
-    overflow:hidden;
+    overflow: visible;
+    display: block;
     z-index:-1; /* Remove this line if it's not going to be a background! */
 }
 
@@ -67,4 +75,92 @@ body {
 	color: white;
 }
 
+
+/* Toggle switch code*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  height: 34px;
+}
+
+ .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "aaa";
+  height: 36px;
+  width: 60px;
+  left:0px;
+  bottom: -1px;
+  top: -1px;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(120px);
+  -ms-transform: translateX(120px);
+  transform: translateX(120px);
+}
+
+.text {
+  color: white;
+}
+
+.text:after {
+  position: absolute;
+  top: 7px;
+  right: 25px;
+  content: "Humidity";
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+.text:before {
+  position: absolute;
+  top: 7px;
+  left: 25px;
+  content: "Temperature";
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+input + .slider + .text:after {
+  opacity: 1;
+}
+input + .slider + .text:before {
+  opacity: 0;
+}
+
+
+input:checked + .slider + .text:after {
+  opacity: 0;
+}
+
+input:checked + .slider + .text:before {
+  opacity: 1;
+}
 
