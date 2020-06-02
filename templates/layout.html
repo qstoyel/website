@@ -6,7 +6,14 @@
 			{% block title %}
 			{% endblock %}
 		</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	</head>
+	<div id="topnav" class = "topnav">
+		<a id="homenav" href = "/">Home</a>
+		<a href="/apartment">Apartment</a>
+	</div>
+	<script src="{{ url_for('static', filename='navFunction.js') }}">
+	</script>
 	<body>
 		{% block body %}
 		{% endblock %}
