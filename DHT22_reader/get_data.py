@@ -4,9 +4,11 @@ import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
 
+data_directory = "/var/opt/website-data/"
+tmp_directory = "/var/opt/website-data/tmp/"
+timestamp_format = '%Y-%m-%d %H:%M:%S'
 
-
-db_filename = "./DHT22_reader/apartment.db"
+db_filename = data_directory + "apartment.db"
 def get_data():
 	#queries db
 	con = sqlite3.connect(db_filename)
@@ -30,13 +32,13 @@ def save_data_to_fig(data, n):
 	plt.title("Humidity")
 	plt.ylabel("Humidity (%)")
 	plt.xlabel("Time")
-	plt.savefig("./static/tmp/hum_"+n+".png")
+	plt.savefig(tmp_directory+"hum_"+n+".png")
 	plt.figure(figsize=(12,6))
 	plt.plot(data["timestamp"], data["temp"])
 	plt.title("Temperature")
 	plt.xlabel("Time")
 	plt.ylabel("Temperature (C)")
-	plt.savefig("./static/tmp/temp_"+n+".png")
+	plt.savefig(tmp_directory+"temp_"+n+".png")
 
 def string_to_datetime(timestr):
-		return datetime.datetime.strptime(timestr, '%Y-%m-%d %H:%M:%S')
+		return datetime.datetime.strptime(timestr, timestamp_format)

@@ -3,6 +3,7 @@
 # except foo.html which is maintained by hand
 #!foo.html
 flaskwebsite/
+venv/
 *.db
 *.png
 __init__.py
