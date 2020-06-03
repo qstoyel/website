@@ -1,8 +1,9 @@
 from flask import Flask, render_template
-from DHT22_reader.get_data import get_data
 import os
 import sys
-import shutil
+
+from dhtreader.config import data_directory
+from dhtreader.get_current_data import get_data
 
 app = Flask(__name__)
 
@@ -12,16 +13,11 @@ def index():
 	
 @app.route("/apartment")
 def apartment():
-	#empties /tmp
-	shutil.rmtree('static/tmp')
-	os.mkdir('static/tmp')
-	current_data = get_data() #queries db, generates plots
+	current_data = get_data() #queries db,gets latest point
 	temp = float(current_data["temp"])
 	hum = float(current_data["hum"])
 	return render_template("apartment.html", temp=temp, hum=hum)
 	
-@app.route("/DHT22_reader/tmp/")
-def get_tmp_path():
-	return "this has to be a string"
-
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
 	

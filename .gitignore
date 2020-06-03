@@ -6,4 +6,4 @@ flaskwebsite/
 venv/
 *.db
 *.png
-__init__.py
+__pycache__

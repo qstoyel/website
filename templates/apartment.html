@@ -11,10 +11,10 @@
 	  		<div class="slider"></div>
 	  		<div class="text"></div>
 		</label>
-	<p>Current temperature is {{ temp }} </p>
-	<p>Current humidity is {{ hum }} </p>
+	<h1>Current temperature is {{ temp }} </h1>
+	<h1>Current humidity is {{ hum }} </h1>
 
-	<img class="dataplot" src="{{ url_for('static', filename='tmp/temp_hour.png') }}">
-	<img class="dataplot" src="{{ url_for('static', filename='tmp/temp_day.png') }}">
-	<img class="dataplot" src="{{ url_for('static', filename='tmp/temp_week.png') }}">
+	<img class="dataplot" src="{{ url_for('static', filename='plots/temp_hour.png') }}">
+	<img class="dataplot" src="{{ url_for('static', filename='plots/temp_day.png') }}">
+	<img class="dataplot" src="{{ url_for('static', filename='plots/temp_week.png') }}">
 {% endblock %}
